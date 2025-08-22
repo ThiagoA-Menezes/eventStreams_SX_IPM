@@ -1,4 +1,7 @@
+![Texto Alternativo](/Users/thiago/workspace/eventStreams_SX_IPM/SX + Kafka.png)
+
 # Kafka and StreamSets
+
 
 ## Kafka, what is it?
 Kafka is a distributed messaging system. The [Apache Kafka page](https://kafka.apache.org/intro) defines Kafka as a system equivalent to the human central nervous system and as the technological foundation for Always-on.  
