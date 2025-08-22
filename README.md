@@ -113,7 +113,12 @@ kafka-console-consumer --bootstrap-server localhost:9092 --topic process_events
 
 ---
 
-## Kafka Setup (Manual with Apache Tarball)
+## Kafka Setup (Manual with Apache)
+I recommend download kafka from the Apache website, make sure to download the binaries not the source:
+
+https://kafka.apache.org/downloads
+
+
 If you are not using Homebrew, download and extract Kafka manually:
 
 ```bash
