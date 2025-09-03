@@ -75,8 +75,10 @@ def new_case(case_id_counter, current_date):
         'Case_ID': f'20250801_{case_id_counter:03d}',
         "current_activity":0,
         "current_date":current_date,
-        "Product_ID":random.choice(product_list),
-        'Product_Description': f"Product {random.choice(product_list)}"
+        "Product_ID":random.choice(product_list)
+        # If you want to add more attributes to the case, you can do it here. Or if you follow the lab with streamsets
+        # you can comment the line below.
+        ,'Product_Description': f"Product {random.choice(product_list)}"
     }
 
 
@@ -102,8 +104,10 @@ def main():
             'Case_ID': current_case['Case_ID'],
             'Activity': activity,
             'Event_Time': f"{current_case['current_date'].strftime('%Y-%m-%d')} {event_time}",
-            'Product_ID': current_case['Product_ID'],
-            'Product_Description': f"Product {current_case['Product_ID']}"
+            'Product_ID': current_case['Product_ID']
+            # If you want to add more attributes to the case, you can do it here. Or if you follow the lab with streamsets
+            # you can comment the line below.
+            ,'Product_Description': f"Product {current_case['Product_ID']}"
         }
 
         # Here is where we send the event to the Kafka topic.
