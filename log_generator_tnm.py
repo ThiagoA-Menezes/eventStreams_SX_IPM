@@ -72,17 +72,18 @@ case_id_counter = 1  # This will be used to generate unique case IDs
 def new_case(case_id_counter, current_date):
     return {
         # This 10d after the case_id_counter is to ensure that the case ID is always 10 digits long, with leading zeros if necessary.
-        "Case ID": f"20250801_{case_id_counter:4d}",
-        "current_activity": 0,
-        "current_date": current_date,
-        "Product ID": random.choice(product_list)
+        'Case_ID': f'20250801_{case_id_counter:03d}',
+        "current_activity":0,
+        "current_date":current_date,
+        "Product_ID":random.choice(product_list),
+        'Product_Description': f"Product {random.choice(product_list)}"
     }
 
 
 # Now the main function will be responsible for generating the log file and sending it to the Kafka topic.
 def main():
     base_log = load_baselog(base_log_file)
-    case_id_counter = len(set([row['Case ID'] for row in base_log])) + 1
+    case_id_counter = len(set([row['Case_ID'] for row in base_log])) + 1
     current_date = datetime.strptime(base_log[0]['Date'], '%Y-%m-%d').date() if base_log else datetime.now().date()
 
     cases = [new_case(case_id_counter, current_date)]
@@ -96,12 +97,13 @@ def main():
         activity_index = current_case['current_activity']
         activity = activities[activity_index]
         event_time = f"{random.randint(0,23):02d}:{random.randint(0,59):02d}:{random.randint(0,59):02d}"
-
+        
         event = {
-            'Case ID': current_case['Case ID'],
+            'Case_ID': current_case['Case_ID'],
             'Activity': activity,
-            'Event Time': f"{current_case['current_date'].strftime('%Y-%m-%d')} {event_time}",
-            'Product ID': current_case['Product ID']
+            'Event_Time': f"{current_case['current_date'].strftime('%Y-%m-%d')} {event_time}",
+            'Product_ID': current_case['Product_ID'],
+            'Product_Description': f"Product {current_case['Product_ID']}"
         }
 
         # Here is where we send the event to the Kafka topic.

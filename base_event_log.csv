@@ -1,4 +1,4 @@
-Case ID,Activity,Event Time,Date,idProduct, descProduct
+Case_ID,Activity,Event_Time,Date,idProduct, descProduct
 Case_001,Start Process,09:00:00,2025-08-18,1, Product 1
 Case_001,Activity A,09:05:00,2025-08-18,1, Product 1
 Case_001,Activity B,09:15:00,2025-08-18,1, Product 1
